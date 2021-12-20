@@ -8,6 +8,7 @@ namespace MapService.Attributes
 {
 	public class CORSActionFilter : ActionFilterAttribute
 	{
+#if !DISABLE_CORS_IN_CODE // To disable CORS Headers, add DISABLE_CORS_IN_CODE at Project mapservice->Properties->Build->Conditional compilation symbols
 		public override void OnActionExecuting(ActionExecutingContext filterContext)
 		{
             filterContext.RequestContext.HttpContext.Response.AddHeader("Access-Control-Allow-Origin", "*");
@@ -23,5 +24,6 @@ namespace MapService.Attributes
 				base.OnActionExecuting(filterContext);
 			}
 		}
+#endif
 	}
 }

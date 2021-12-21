@@ -15,8 +15,12 @@ namespace MapService
         {
             log4net.Config.XmlConfigurator.Configure();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-			RouteConfig.RegisterRoutes(RouteTable.Routes);					
-		}
+			RouteConfig.RegisterRoutes(RouteTable.Routes);
+#if !DISABLE_CORS_IN_CODE // To disable CORS Headers, add DISABLE_CORS_IN_CODE at Project mapservice->Properties->Build->Conditional compilation symbols
+            ILog _log = LogManager.GetLogger(typeof(WebApiApplication));
+            _log.Debug("CORS Headers using application code is ENABLED!");
+#endif
+        }
 
         protected void Application_End()
         {

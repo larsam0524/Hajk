@@ -111,10 +111,19 @@ class IntegrationView extends React.PureComponent {
     this.localObserver.subscribe("mf-start-draw-new-geometry", () => {
       this.newGeometryFunctions[this.state.mode]();
     });
-    this.localObserver.subscribe("mf-new-feature-created", (feature) => {
-      this.newFeature = feature;
+    this.localObserver.subscribe("mf-new-feature-created", (featureSet) => {
+      const features = {
+        features: featureSet.featureCollection.features,
+        isNew: true,
+      };
+      //feature.isNew = true;
+      this.newFeature = features;
+      // this.#addNewItemToList(this.newFeature);
+      // this.#addNewItemToSource(this.newFeature);
+      // this.newFeature = null;
     });
     this.localObserver.subscribe("mf-end-draw-new-geometry", (editMode) => {
+      console.log(this.newFeature);
       this.#addNewItemToList(this.newFeature);
       this.#addNewItemToSource(this.newFeature);
       this.newFeature = null;
@@ -304,8 +313,6 @@ class IntegrationView extends React.PureComponent {
   };
 
   #addNewItemToSource = (data) => {
-    console.log(data);
-    //debugger;
     const feature = data?.features[0];
     this.props.model.addFeatureToNewSource(feature, this.state.mode);
   };
@@ -399,7 +406,8 @@ class IntegrationView extends React.PureComponent {
       id = this.state.currentListResults.area.length - 1;
     }
     let areaData = props.features.map((feature) => {
-      const properties = feature.getProperties();
+      debugger;
+      const properties = feature?.getProperties();
       const name = props.isNew ? `Nytt område` : properties.omrade;
       return {
         id: ++id,
@@ -534,7 +542,6 @@ class IntegrationView extends React.PureComponent {
   };
 
   #removeFromResults = (item, mode) => {
-    debugger;
     let updateList = { ...this.state.currentListResults };
     const updatedResults = updateList[mode].filter(
       (listItem) => listItem.id !== item.id

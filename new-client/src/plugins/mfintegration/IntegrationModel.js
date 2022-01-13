@@ -451,7 +451,7 @@ class IntegrationModel {
 
     this.#clearSource(this.drawingToolFunctions.new.source);
 
-    const data = { features: [e.feature], isNew: true };
+    //const data = { features: [e.feature], isNew: true };
     this.localObserver.publish("mf-new-feature-created", data);
   };
 
@@ -472,11 +472,16 @@ class IntegrationModel {
         },
         id: "område.0",
         geometry_name: null,
-        properties: null,
+        properties: { saknas: "-" },
         type: "Feature",
       },
     ];
-    const simulatedFeatureCollection = { features: features };
+    const geom = new Transform().createGeometry("Polygon", coordinates);
+    let newFeature = new Feature({
+      geometry: geom,
+    });
+    newFeature.setProperties(features[0].properties);
+    const simulatedFeatureCollection = { features: [newFeature] };
     return {
       searchType: "none",
       geometryField: null,
@@ -584,10 +589,12 @@ class IntegrationModel {
     featureCollection,
     transformation
   ) => {
+    console.log("#createFeaturesFromFeatureCollection");
+    debugger;
     if (featureCollection.features.length === 0)
       return { noFeaturesFound: true };
-
     const features = featureCollection.features.map((feature) => {
+      //debugger;
       let geometry = new Transform().createGeometry(
         feature.geometry.type,
         feature.geometry.coordinates

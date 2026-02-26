@@ -512,7 +512,6 @@ class SearchBar extends React.PureComponent {
 
   render() {
     const { showSearchResults, isMobile } = this.props;
-    const { renderElsewhere } = this.props.options;
 
     return (
       <Grid

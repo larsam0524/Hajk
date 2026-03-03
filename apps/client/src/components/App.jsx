@@ -463,7 +463,7 @@ class App extends React.PureComponent {
       console.info(
         `The map configuration contains unavailable plugins: ${unsupportedToolsFoundInMapConfig.join(
           ", "
-        )}. Please check your map config and buildConfig.json.  `
+        )}. Please check your map config.  `
       );
   };
   /**

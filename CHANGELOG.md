@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Breaking
 
 - Client: As part of migration the to Vite (see below and [PR #1754](https://github.com/hajkmap/Hajk/pull/1754)), support for some legacy browsers, including iOS <=12, has been removed. See [commit](https://github.com/hajkmap/Hajk/commit/3fc95ba9b565503af499909eb2cdb521e061c706) for more details.
+- Client: Another implication of the Vite migration is that `buildConfig.json` is no longer used. Instead, we rely on Vite's dynamic chuck loading to decide which "plugins" (i.e. Hajk tools) are loaded. This is now done in runtime and administrators can change this behavior by editing the `availableTools` array in `appConfig.json`. If the array is missing or empty, we fall back to load all tools. Please note that whatever is visible to the end user has not changed: it is still up to the map configuration to decide which tools really are shown in a specific map.
 
 ### Changed
 

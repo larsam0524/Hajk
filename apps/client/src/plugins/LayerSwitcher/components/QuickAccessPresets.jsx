@@ -198,6 +198,9 @@ function QuickAccessPresets({
       anchorOrigin: { vertical: "bottom", horizontal: "center" },
     });
 
+    // Expand QuickAccess section
+    globalObserver.publish("layerswitcher.expandQuickAccess");
+
     // Close quickAccessPresets view on load
     handleBackButtonClick(true);
   };

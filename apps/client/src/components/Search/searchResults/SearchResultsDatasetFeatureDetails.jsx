@@ -205,6 +205,11 @@ class SearchResultsDatasetFeatureDetails extends React.PureComponent {
           </HajkToolTip>
         </Grid>
         <Grid>
+          <Typography variant="body2" sx={{ px: 1 }}>
+            {currentFeatureIndex + 1} av {numFeaturesInCollection}
+          </Typography>
+        </Grid>
+        <Grid>
           <HajkToolTip
             title={
               !buttonRightDisabled ? "Visa nästa objekt i resultatlistan" : ""

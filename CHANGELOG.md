@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Client/Print: Print tool's components changed. We managed to replace two large, rather old, dependencies with one modern PDF library + native rendering of the PNG files, see issue [#1757](https://github.com/hajkmap/Hajk/issues/1757).
 - Backend: Refactored and consolidated logging. All log messages are now automatically decorated with username (if AD lookup is active, else "-"). As a result of this, the default log level for most messages has changed from `TRACE` to `DEBUG`. If you see too much info in the production log, ensure not to use `TRACE` there (which isn't a good idea for production anyway, except for hunting down runtime issues). See [issue #1764](https://github.com/hajkmap/Hajk/issues/1764) and [PR #1765](https://github.com/hajkmap/Hajk/pull/1765) for more details.
 - Client: LayerSwitcher's search box now has the same styling as the app's regular search box. See issue [#1645](https://github.com/hajkmap/Hajk/issues/1645) and PR [#1768](https://github.com/hajkmap/Hajk/pull/1768).
+- Backend: The proxy mechanism now properly sets X-Forwarded headers, see ([commit](https://github.com/hajkmap/Hajk/commit/c38339b5a0675911d2625c4b29b107c9ea802ac4)).
 
 ### Fixed
 

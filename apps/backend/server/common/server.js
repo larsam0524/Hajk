@@ -349,6 +349,7 @@ built-it compression by setting the ENABLE_GZIP_COMPRESSION option to "true" in 
               logger: l,
               target: target,
               changeOrigin: true,
+              xfwd: true, // Add x-forward headers (X-Forwarded-For, X-Forwarded-Host etc.). Important for e.g. QGIS Server to properly write the URLs in the responses.
               pathRewrite: {
                 [`^/api/v${apiVersion}/proxy/${context}`]: "", // remove base path
               },

@@ -512,6 +512,7 @@ class SearchBar extends React.PureComponent {
 
   render() {
     const { showSearchResults, isMobile } = this.props;
+    const { renderElsewhere } = this.props.options;
 
     return (
       <Grid
@@ -523,12 +524,10 @@ class SearchBar extends React.PureComponent {
             this.gridRef.current
           );
         }}
-        sx={[
-          {
-            width: 400,
-          },
-          { height: "auto" },
-        ]}
+        sx={{
+          width: 400,
+          height: (theme) => (renderElsewhere ? "auto" : theme.spacing(6)),
+        }}
       >
         <Grid>
           <Paper id="search-bar" elevation={isMobile ? 0 : 1}>

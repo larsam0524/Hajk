@@ -445,7 +445,7 @@ class App extends React.PureComponent {
     lowerCaseActiveTools.push("externallinks");
     lowerCaseActiveTools.push("information");
 
-    // Check which plugins defined in mapConfig don't exist in buildConfig
+    // Check which plugins defined in mapConfig don't exist in appConfig.availableTools
     const unsupportedToolsFoundInMapConfig = this.props.config.mapConfig.tools
       .map((t) => t.type.toLowerCase())
       .filter((e) => {
@@ -463,7 +463,7 @@ class App extends React.PureComponent {
       console.info(
         `The map configuration contains unavailable plugins: ${unsupportedToolsFoundInMapConfig.join(
           ", "
-        )}. Please check your map config and buildConfig.json.  `
+        )}. Please check your map config.  `
       );
   };
   /**

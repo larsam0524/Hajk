@@ -8,7 +8,11 @@ import FavoritesList from "./FavoritesList";
 import FavoritesOptions from "./FavoritesOptions";
 import FavoritesViewHeader from "./FavoritesViewHeader";
 import ConfirmationDialog from "components/ConfirmationDialog";
-import { useLayerSwitcherDispatch } from "../../LayerSwitcherProvider";
+import {
+  QUICK_ACCESS_KEY,
+  QUICK_ACCESS_LS_KEY,
+  useLayerSwitcherDispatch,
+} from "../../LayerSwitcherProvider";
 
 import {
   Box,
@@ -160,6 +164,12 @@ function Favorites({
         }
       }
     });
+
+    // Save loaded layers to localStorage
+    const loadedLayerIdsArray = allMapLayers
+      .filter((l) => l.get(QUICK_ACCESS_KEY) === true)
+      .map((l) => l.get("name"));
+    LocalStorageHelper.set(QUICK_ACCESS_LS_KEY, loadedLayerIdsArray);
 
     // Publish event to auto-expand affected groups and GroupLayers
     if (loadedLayerIds.size > 0) {

@@ -157,19 +157,6 @@ export default class PrintModel {
     return totalHeight;
   };
 
-  hexToRgb = (hex) => {
-    hex = hex.replace(/^#/, "");
-    let r = parseInt(hex.slice(0, 2), 16);
-    let g = parseInt(hex.slice(2, 4), 16);
-    let b = parseInt(hex.slice(4, 6), 16);
-
-    r = r > 127.5 ? 1 : 0;
-    g = g > 127.5 ? 1 : 0;
-    b = b > 127.5 ? 1 : 0;
-
-    return { r, g, b };
-  };
-
   getRightAlignedPositions = (
     text,
     fontSize,
@@ -1086,8 +1073,7 @@ export default class PrintModel {
       const resolution = options.resolution;
       const scale = options.scale / 1000;
 
-      // Convert hex color provided to rgb since libPDF uses that instead, should probably be handled earlier.
-      this.textColor = this.hexToRgb(options.mapTextColor);
+      this.textColor = options.mapTextColorNormRgb;
 
       // Our dimensions are for landscape orientation by default. Flip the values if portrait orientation requested.
       const dim =

@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [unreleased]
+## [4.3.0] 2026-04-20
 
 ### Changed
 
@@ -22,6 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Draw order is now always shown when enabled by admin, [#1792](https://github.com/hajkmap/hajk/issues/1792).
 - Allow visibility toggling for layers coming from imported files, [#1797](https://github.com/hajkmap/Hajk/pull/1797).
 - Added optional property chain to rule out possible runtime crash with certain misconfigured layers, [commit](https://github.com/hajkmap/Hajk/commit/3a0c6cd5294c1f1faca5ff9ff5c7caad2307222e).
+- DocumentHandler: Ensure that all menu entries that have documents connected to them show up in the print window too, [commit](https://github.com/hajkmap/Hajk/commit/63878937eadfa5da992aa4bc4992dca15aa2d47f).
+- Print: Ensure libPDF respects the colors selected in the ColorPicker. Closes [#1801](https://github.com/hajkmap/Hajk/pull/1801).
 
 ### Security
 
@@ -528,6 +530,7 @@ _A quick follow-up to 3.13.22, that had some issues with certain map configurati
 
 <!-- [unreleased]: https://github.com/hajkmap/Hajk/compare/v4.2.0...develop -->
 
+[4.3.0]: https://github.com/hajkmap/Hajk/compare/v4.3.0-rc1...v4.3.0
 [4.3.0-rc.1]: https://github.com/hajkmap/Hajk/compare/v4.2.0...v4.3.0-rc1
 [4.2.0]: https://github.com/hajkmap/Hajk/compare/v4.2.0-rc.1...v4.2.0
 [4.2.0-rc.1]: https://github.com/hajkmap/Hajk/compare/v4.1.0...v4.2.0-rc.1
